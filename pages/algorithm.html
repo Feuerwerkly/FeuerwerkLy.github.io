@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算法与数据结构 - Feuerwerk's Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/docs-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        .alg-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: var(--spacing-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 5rem;
+            height: calc(100vh - 6rem);
+            overflow-y: auto;
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-item {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+        }
+
+        .sidebar-link.active {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .alg-content {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .alg-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .alg-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .alg-subtitle {
+            color: var(--text-tertiary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .difficulty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .difficulty-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+            border-top: 4px solid;
+        }
+
+        .difficulty-card.easy {
+            border-color: #67c23a;
+        }
+
+        .difficulty-card.medium {
+            border-color: #e6a23c;
+        }
+
+        .difficulty-card.hard {
+            border-color: #f56c6c;
+        }
+
+        .difficulty-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .difficulty-card.easy .difficulty-number {
+            color: #67c23a;
+        }
+
+        .difficulty-card.medium .difficulty-number {
+            color: #e6a23c;
+        }
+
+        .difficulty-card.hard .difficulty-number {
+            color: #f56c6c;
+        }
+
+        .difficulty-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .topic-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .topic-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .topic-title {
+            flex: 1;
+        }
+
+        .topic-title h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .topic-title p {
+            color: var(--text-tertiary);
+            font-size: 0.95rem;
+        }
+
+        .topic-progress {
+            text-align: right;
+        }
+
+        .progress-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .progress-label {
+            color: var(--text-lighter);
+            font-size: 0.85rem;
+        }
+
+        .problem-list {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .problem-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .problem-card:hover {
+            transform: translateX(4px);
+            border-left-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .problem-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .problem-info {
+            flex: 1;
+        }
+
+        .problem-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .problem-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            font-size: 0.85rem;
+            color: var(--text-lighter);
+        }
+
+        .problem-difficulty {
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .problem-difficulty.easy {
+            background: rgba(103, 194, 58, 0.1);
+            color: #67c23a;
+        }
+
+        .problem-difficulty.medium {
+            background: rgba(230, 162, 60, 0.1);
+            color: #e6a23c;
+        }
+
+        .problem-difficulty.hard {
+            background: rgba(245, 108, 108, 0.1);
+            color: #f56c6c;
+        }
+
+        .problem-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .problem-link {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .problem-link.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .problem-link.primary:hover {
+            background: var(--primary-light);
+        }
+
+        .problem-link.secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+
+        .problem-link.secondary:hover {
+            background: var(--border-color);
+        }
+
+        .code-block {
+            background: #282c34;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+        }
+
+        .code-block code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .tip-box {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .tip-box-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        @media (max-width: 1024px) {
+            .alg-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Feuerwerk's KB</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-search">
+                    <input type="text" placeholder="搜索文档..." class="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html" class="nav-link">首页</a>
+                    <a href="algorithm.html" class="nav-link active">算法</a>
+                    <a href="java-backend.html" class="nav-link">Java后端</a>
+                    <a href="ai.html" class="nav-link">人工智能</a>
+                    <a href="database.html" class="nav-link">数据库</a>
+                    <a href="projects.html" class="nav-link">项目展示</a>
+                    <a href="about.html" class="nav-link">关于</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="main-container">
+        <div class="alg-container">
+            <!-- 侧边栏 -->
+            <aside class="sidebar">
+                <div class="sidebar-title">
+                    <i class="fas fa-brain"></i>
+                    算法学习导航
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="#basics" class="sidebar-link active">
+                            <i class="fas fa-play-circle"></i>
+                            基础算法
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#data-structure" class="sidebar-link">
+                            <i class="fas fa-sitemap"></i>
+                            数据结构
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#dp" class="sidebar-link">
+                            <i class="fas fa-chart-line"></i>
+                            动态规划
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#graph" class="sidebar-link">
+                            <i class="fas fa-project-diagram"></i>
+                            图论
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#search" class="sidebar-link">
+                            <i class="fas fa-search"></i>
+                            搜索算法
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#advanced" class="sidebar-link">
+                            <i class="fas fa-rocket"></i>
+                            高级算法
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- 算法内容 -->
+            <main class="alg-content">
+                <!-- 头部 -->
+                <div class="alg-header">
+                    <h1 class="alg-title">算法与数据结构</h1>
+                    <p class="alg-subtitle">
+                        系统学习算法与数据结构，提升编程思维和问题解决能力
+                    </p>
+                </div>
+
+                <!-- 统计卡片 -->
+                <div class="difficulty-grid">
+                    <div class="difficulty-card easy">
+                        <div class="difficulty-number">156</div>
+                        <div class="difficulty-label">简单</div>
+                    </div>
+                    <div class="difficulty-card medium">
+                        <div class="difficulty-number">89</div>
+                        <div class="difficulty-label">中等</div>
+                    </div>
+                    <div class="difficulty-card hard">
+                        <div class="difficulty-number">34</div>
+                        <div class="difficulty-label">困难</div>
+                    </div>
+                </div>
+
+                <!-- 基础算法 -->
+                <section id="basics" class="topic-section">
+                    <div class="topic-header">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="topic-title">
+                            <h2>基础算法</h2>
+                            <p>排序、查找、递归等基础算法思想</p>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-text">45/50</div>
+                            <div class="progress-label">已完成</div>
+                        </div>
+                    </div>
+
+                    <div class="problem-list">
+                        <div class="problem-card">
+                            <div class="problem-number">1</div>
+                            <div class="problem-info">
+                                <div class="problem-title">两数之和</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty easy">简单</span>
+                                    <span><i class="far fa-clock"></i> 5分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/two-sum/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-number">2</div>
+                            <div class="problem-info">
+                                <div class="problem-title">冒泡排序</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty easy">简单</span>
+                                    <span><i class="far fa-clock"></i> 10分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="#" class="problem-link secondary">
+                                    <i class="fas fa-code"></i> 查看题解
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-number">3</div>
+                            <div class="problem-info">
+                                <div class="problem-title">二分查找</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty easy">简单</span>
+                                    <span><i class="far fa-clock"></i> 15分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/binary-search/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <div class="tip-box-title">💡 学习建议</div>
+                        <p>基础算法是后续学习的基础，建议先掌握冒泡、选择、插入等排序算法，再学习快速排序、归并排序等高效算法。</p>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem;">快速排序示例代码</h3>
+                    <div class="code-block">
+                        <pre><code class="language-java">public class QuickSort {
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(arr, low, high);
+            quickSort(arr, low, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, high);
+        }
+    }
+
+    private static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+
+        swap(arr, i + 1, high);
+        return i + 1;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        quickSort(arr, 0, arr.length - 1);
+
+        System.out.println("排序后的数组:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- 数据结构 -->
+                <section id="data-structure" class="topic-section">
+                    <div class="topic-header">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <div class="topic-title">
+                            <h2>数据结构</h2>
+                            <p>数组、链表、栈、队列、树、图等数据结构</p>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-text">38/45</div>
+                            <div class="progress-label">已完成</div>
+                        </div>
+                    </div>
+
+                    <div class="problem-list">
+                        <div class="problem-card">
+                            <div class="problem-number">1</div>
+                            <div class="problem-info">
+                                <div class="problem-title">反转链表</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty easy">简单</span>
+                                    <span><i class="far fa-clock"></i> 8分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/reverse-linked-list/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-number">2</div>
+                            <div class="problem-info">
+                                <div class="problem-title">有效的括号</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty easy">简单</span>
+                                    <span><i class="far fa-clock"></i> 10分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/valid-parentheses/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-number">3</div>
+                            <div class="problem-info">
+                                <div class="problem-title">二叉树的中序遍历</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty easy">简单</span>
+                                    <span><i class="far fa-clock"></i> 12分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/binary-tree-inorder-traversal/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 动态规划 -->
+                <section id="dp" class="topic-section">
+                    <div class="topic-header">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="topic-title">
+                            <h2>动态规划</h2>
+                            <p>背包问题、最短路径、最长公共子序列等经典DP问题</p>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-text">28/40</div>
+                            <div class="progress-label">已完成</div>
+                        </div>
+                    </div>
+
+                    <div class="problem-list">
+                        <div class="problem-card">
+                            <div class="problem-number">1</div>
+                            <div class="problem-info">
+                                <div class="problem-title">爬楼梯</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty easy">简单</span>
+                                    <span><i class="far fa-clock"></i> 10分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/climbing-stairs/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-number">2</div>
+                            <div class="problem-info">
+                                <div class="problem-title">零钱兑换</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty medium">中等</span>
+                                    <span><i class="far fa-clock"></i> 20分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/coin-change/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-number">3</div>
+                            <div class="problem-info">
+                                <div class="problem-title">最长递增子序列</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty medium">中等</span>
+                                    <span><i class="far fa-clock"></i> 25分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/longest-increasing-subsequence/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <div class="tip-box-title">💡 DP解题思路</div>
+                        <p>动态规划的核心是找到状态转移方程。解题步骤：1. 定义dp数组含义 2. 找出状态转移方程 3. 确定初始条件和边界 4. 确定遍历顺序 5. 举例推导</p>
+                    </div>
+                </section>
+
+                <!-- 图论 -->
+                <section id="graph" class="topic-section">
+                    <div class="topic-header">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="topic-title">
+                            <h2>图论</h2>
+                            <p>图的遍历、最短路径、最小生成树等图算法</p>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-text">22/35</div>
+                            <div class="progress-label">已完成</div>
+                        </div>
+                    </div>
+
+                    <div class="problem-list">
+                        <div class="problem-card">
+                            <div class="problem-number">1</div>
+                            <div class="problem-info">
+                                <div class="problem-title">岛屿数量</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty medium">中等</span>
+                                    <span><i class="far fa-clock"></i> 15分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/number-of-islands/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-number">2</div>
+                            <div class="problem-info">
+                                <div class="problem-title">克隆图</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty medium">中等</span>
+                                    <span><i class="far fa-clock"></i> 20分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/clone-graph/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 搜索算法 -->
+                <section id="search" class="topic-section">
+                    <div class="topic-header">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="topic-title">
+                            <h2>搜索算法</h2>
+                            <p>DFS、BFS、回溯、贪心等搜索策略</p>
+                        </div>
+                        <div class="topic-progress">
+                            <div class="progress-text">18/25</div>
+                            <div class="progress-label">已完成</div>
+                        </div>
+                    </div>
+
+                    <div class="problem-list">
+                        <div class="problem-card">
+                            <div class="problem-number">1</div>
+                            <div class="problem-info">
+                                <div class="problem-title">全排列</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty medium">中等</span>
+                                    <span><i class="far fa-clock"></i> 15分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/permutations/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-number">2</div>
+                            <div class="problem-info">
+                                <div class="problem-title">N皇后</div>
+                                <div class="problem-meta">
+                                    <span class="problem-difficulty hard">困难</span>
+                                    <span><i class="far fa-clock"></i> 30分钟</span>
+                                </div>
+                            </div>
+                            <div class="problem-actions">
+                                <a href="https://leetcode.cn/problems/n-queens/" target="_blank" class="problem-link primary">
+                                    <i class="fas fa-external-link-alt"></i> LeetCode
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 学习资源 -->
+                <section class="topic-section">
+                    <div class="topic-header">
+                        <div class="topic-icon" style="background: linear-gradient(135deg, #30cfd0, #330867);">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="topic-title">
+                            <h2>学习资源</h2>
+                            <p>推荐书籍、网站和工具</p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-md);">
+                            <h4 style="margin-bottom: 0.5rem;">📚 推荐书籍</h4>
+                            <p style="color: var(--text-tertiary); font-size: 0.9rem;">《算法（第4版）》、《剑指Offer》、《编程珠玑》</p>
+                        </div>
+                        <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-md);">
+                            <h4 style="margin-bottom: 0.5rem;">🌐 在线平台</h4>
+                            <p style="color: var(--text-tertiary); font-size: 0.9rem;">LeetCode、牛客网、洛谷、Codeforces</p>
+                        </div>
+                        <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-md);">
+                            <h4 style="margin-bottom: 0.5rem;">🎓 视频课程</h4>
+                            <p style="color: var(--text-tertiary); font-size: 0.9rem;">B站、慕课网、极客时间</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>© 2024 Feuerwerk. 使用 ❤️ 构建</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 初始化代码高亮
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+        });
+
+        // 侧边栏导航高亮
+        document.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.topic-section');
+            const navLinks = document.querySelectorAll('.sidebar-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

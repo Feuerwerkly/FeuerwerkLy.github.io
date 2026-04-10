@@ -2,35 +2,457 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的作品集</title>
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:Arial;padding:40px;background:#f6f8fa}
-        .container{max-width:900px;margin:0 auto}
-        .title{font-size:28px;margin-bottom:10px}
-        .desc{color:#666;margin-bottom:30px}
-        .project{background:white;padding:20px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:16px}
-        .project h3{margin-bottom:8px}
-        .project p{color:#555;margin-bottom:10px}
-        .project a{color:#0969da;text-decoration:none}
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Feuerwerk的个人学习知识库 - 包含Java、算法、人工智能、数据库等技术学习笔记">
+    <meta name="keywords" content="Java,算法,人工智能,数据库,学习笔记,技术文档">
+    <title>Feuerwerk's Knowledge Base - 终身学习者的技术成长之路</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/docs-style.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">feuerwerk的作品集</h1>
-        <p class="desc">Android / Java / 小程序 / 后端开发</p>
-
-        <div class="project">
-            <h3>日历APP</h3>
-            <p>Android原生开发，农历阳历转换、纪念日提醒</p>
-            <a href="https://github.com/你的用户名/项目地址">查看源码</a>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Feuerwerk's Knowledge Base</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-search">
+                    <input type="text" placeholder="搜索文档..." class="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link active">首页</a>
+                    <a href="pages/algorithm.html" class="nav-link">算法</a>
+                    <a href="pages/java-backend.html" class="nav-link">Java后端</a>
+                    <a href="pages/ai.html" class="nav-link">人工智能</a>
+                    <a href="pages/database.html" class="nav-link">数据库</a>
+                    <a href="pages/projects.html" class="nav-link">项目展示</a>
+                    <a href="pages/about.html" class="nav-link">关于</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
+    </nav>
 
-        <div class="project">
-            <h3>学生管理系统</h3>
-            <p>SpringBoot+MySQL实现的后台管理系统</p>
-            <a href="https://github.com/你的用户名/项目地址">查看源码</a>
-        </div>
+    <!-- 主要内容区域 -->
+    <div class="main-container">
+        <!-- 首页Hero区域 -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    持续更新中
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Feuerwerk's Knowledge Base</span>
+                </h1>
+                <p class="hero-subtitle">终身学习者的技术成长之路</p>
+                <p class="hero-description">
+                    记录我的编程学习历程，涵盖Java后端、算法、人工智能、数据库、中间件等技术领域。
+                    致力于创建高质量的技术文档，帮助自己和他人在技术道路上不断进步。
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">原创文章</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">技术领域</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">实战项目</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">365</div>
+                        <div class="stat-label">学习天数</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="pages/java-backend.html" class="btn btn-primary">
+                        <i class="fas fa-book-open"></i>
+                        开始学习
+                    </a>
+                    <a href="pages/projects.html" class="btn btn-secondary">
+                        <i class="fas fa-code"></i>
+                        查看项目
+                    </a>
+                </div>
+            </div>
+            <div class="hero-illustration">
+                <div class="floating-card">
+                    <i class="fab fa-java"></i>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-database"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- 快速导航 -->
+        <section class="quick-nav">
+            <h2 class="section-title">
+                <i class="fas fa-compass"></i>
+                快速导航
+            </h2>
+            <div class="nav-grid">
+                <a href="pages/algorithm.html" class="nav-card">
+                    <div class="card-icon algorithm">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>算法与数据结构</h3>
+                        <p>LeetCode刷题、常见算法、数据结构详解</p>
+                        <div class="card-footer">
+                            <span>15 篇文章</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pages/java-backend.html" class="nav-card">
+                    <div class="card-icon java">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Java后端开发</h3>
+                        <p>Spring生态、微服务、性能优化、设计模式</p>
+                        <div class="card-footer">
+                            <span>25 篇文章</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pages/ai.html" class="nav-card">
+                    <div class="card-icon ai">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>人工智能</h3>
+                        <p>机器学习、深度学习、Python实战</p>
+                        <div class="card-footer">
+                            <span>12 篇文章</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pages/framework.html" class="nav-card">
+                    <div class="card-icon framework">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>框架技术</h3>
+                        <p>Spring全家桶、MyBatis、Vue.js等主流框架</p>
+                        <div class="card-footer">
+                            <span>18 篇文章</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pages/database.html" class="nav-card">
+                    <div class="card-icon database">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>数据库技术</h3>
+                        <p>MySQL、Oracle、SQL优化、事务处理</p>
+                        <div class="card-footer">
+                            <span>20 篇文章</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="pages/middleware.html" class="nav-card">
+                    <div class="card-icon middleware">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>中间件技术</h3>
+                        <p>Redis、消息队列、分布式、高并发</p>
+                        <div class="card-footer">
+                            <span>16 篇文章</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 最新文章 -->
+        <section class="latest-posts">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-newspaper"></i>
+                    最新文章
+                </h2>
+                <a href="#" class="view-all">
+                    查看全部
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="posts-grid">
+                <article class="post-card">
+                    <div class="post-header">
+                        <span class="post-tag">Java</span>
+                        <span class="post-date">2024-01-15</span>
+                    </div>
+                    <h3 class="post-title">
+                        <a href="#">深入理解JVM内存模型与垃圾回收机制</a>
+                    </h3>
+                    <p class="post-excerpt">
+                        详细介绍JVM的内存结构、垃圾回收算法、垃圾收集器以及性能调优技巧...
+                    </p>
+                    <div class="post-footer">
+                        <div class="post-meta">
+                            <span><i class="far fa-clock"></i> 15分钟</span>
+                            <span><i class="far fa-eye"></i> 2.5k</span>
+                        </div>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <span class="post-tag">算法</span>
+                        <span class="post-date">2024-01-12</span>
+                    </div>
+                    <h3 class="post-title">
+                        <a href="#">动态规划经典问题详解：从入门到精通</a>
+                    </h3>
+                    <p class="post-excerpt">
+                        系统讲解动态规划的思想、常见题型和解题技巧，配以详细代码示例...
+                    </p>
+                    <div class="post-footer">
+                        <div class="post-meta">
+                            <span><i class="far fa-clock"></i> 20分钟</span>
+                            <span><i class="far fa-eye"></i> 1.8k</span>
+                        </div>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <span class="post-tag">数据库</span>
+                        <span class="post-date">2024-01-10</span>
+                    </div>
+                    <h3 class="post-title">
+                        <a href="#">MySQL索引优化实战：让你的查询飞起来</a>
+                    </h3>
+                    <p class="post-excerpt">
+                        深入探讨MySQL索引的原理、设计原则和优化技巧，包含大量实战案例...
+                    </p>
+                    <div class="post-footer">
+                        <div class="post-meta">
+                            <span><i class="far fa-clock"></i> 18分钟</span>
+                            <span><i class="far fa-eye"></i> 3.2k</span>
+                        </div>
+                        <a href="#" class="read-more">阅读更多</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 学习路线 -->
+        <section class="learning-path">
+            <h2 class="section-title">
+                <i class="fas fa-road"></i>
+                学习路线推荐
+            </h2>
+            <div class="path-container">
+                <div class="path-item">
+                    <div class="path-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="path-content">
+                        <h3>Java基础路线</h3>
+                        <p>Java语法 → 面向对象 → 集合框架 → IO流 → 多线程 → JVM</p>
+                        <a href="pages/java-backend.html" class="path-link">开始学习</a>
+                    </div>
+                </div>
+
+                <div class="path-item">
+                    <div class="path-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="path-content">
+                        <h3>算法进阶路线</h3>
+                        <p>基础数据结构 → 基础算法 → 动态规划 → 图论 → 高级算法</p>
+                        <a href="pages/algorithm.html" class="path-link">开始学习</a>
+                    </div>
+                </div>
+
+                <div class="path-item">
+                    <div class="path-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="path-content">
+                        <h3>后端架构路线</h3>
+                        <p>Spring Boot → 微服务 → 分布式 → 高并发 → 性能优化</p>
+                        <a href="pages/java-backend.html" class="path-link">开始学习</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 精选项目 -->
+        <section class="featured-projects">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i>
+                    精选项目
+                </h2>
+                <a href="pages/projects.html" class="view-all">
+                    查看全部项目
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="projects-showcase">
+                <div class="project-item">
+                    <div class="project-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>日历APP</h3>
+                        <p>Android原生开发的日历应用，支持农历阳历转换、节日提醒等功能</p>
+                        <div class="project-tags">
+                            <span class="tag">Android</span>
+                            <span class="tag">Java</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>学生管理系统</h3>
+                        <p>基于SpringBoot和MySQL的后台管理系统，功能完善</p>
+                        <div class="project-tags">
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 贡献者/致谢 -->
+        <section class="contributors">
+            <h2 class="section-title">
+                <i class="fas fa-heart"></i>
+                感谢以下开源项目的启发
+            </h2>
+            <div class="contributors-grid">
+                <a href="https://github.com/Snailclimb/JavaGuide" target="_blank" class="contributor-card">
+                    <i class="fas fa-book"></i>
+                    <span>JavaGuide</span>
+                </a>
+                <a href="https://github.com/OI-wiki/OI-wiki" target="_blank" class="contributor-card">
+                    <i class="fas fa-trophy"></i>
+                    <span>OI-wiki</span>
+                </a>
+            </div>
+        </section>
     </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <i class="fas fa-graduation-cap"></i>
+                        Feuerwerk's Knowledge Base
+                    </h3>
+                    <p>终身学习者的技术成长之路</p>
+                    <div class="social-links">
+                        <a href="https://github.com/FeuerwerkLy" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:your-email@example.com" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" title="博客">
+                            <i class="fas fa-blog"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="pages/algorithm.html">算法</a></li>
+                        <li><a href="pages/java-backend.html">Java后端</a></li>
+                        <li><a href="pages/ai.html">人工智能</a></li>
+                        <li><a href="pages/projects.html">项目展示</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>技术支持</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">关于本站</a></li>
+                        <li><a href="#">更新日志</a></li>
+                        <li><a href="#">贡献指南</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>订阅更新</h3>
+                    <p>订阅我们的邮件列表，获取最新文章</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="您的邮箱地址">
+                        <button type="submit">订阅</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Feuerwerk. 使用 ❤️ 构建 | 基于 MIT 协议</p>
+                <p class="footer-stats">
+                    <span><i class="fas fa-file-alt"></i> 106 篇文章</span>
+                    <span><i class="fas fa-code-branch"></i> 23 个项目</span>
+                    <span><i class="fas fa-users"></i> 1000+ 访客</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

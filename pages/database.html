@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据库技术 - Feuerwerk's Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/docs-style.css">
+    <style>
+        .db-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .db-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-xl);
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border-radius: var(--radius-xl);
+            color: white;
+        }
+
+        .db-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .db-description {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .db-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .db-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .db-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #fa709a;
+        }
+
+        .db-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .db-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .db-card p {
+            color: var(--text-tertiary);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .topic-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .topic-item i {
+            color: #fa709a;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Feuerwerk's KB</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-search">
+                    <input type="text" placeholder="搜索文档..." class="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html" class="nav-link">首页</a>
+                    <a href="algorithm.html" class="nav-link">算法</a>
+                    <a href="java-backend.html" class="nav-link">Java后端</a>
+                    <a href="ai.html" class="nav-link">人工智能</a>
+                    <a href="database.html" class="nav-link active">数据库</a>
+                    <a href="projects.html" class="nav-link">项目展示</a>
+                    <a href="about.html" class="nav-link">关于</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="main-container">
+        <div class="db-container">
+            <!-- 头部 -->
+            <div class="db-header">
+                <h1 class="db-title">数据库技术学习指南</h1>
+                <p class="db-description">
+                    深入学习关系型数据库和NoSQL数据库，掌握SQL优化和数据库设计
+                </p>
+            </div>
+
+            <!-- 数据库主题 -->
+            <div class="db-grid">
+                <div class="db-card">
+                    <div class="db-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>MySQL</h3>
+                    <p>最流行的开源关系型数据库，掌握索引优化、事务处理、主从复制等核心技术</p>
+                    <ul class="topic-list">
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            索引原理与优化
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            事务隔离级别
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            SQL 调优实战
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="db-card">
+                    <div class="db-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Oracle</h3>
+                    <p>企业级数据库管理系统，学习PL/SQL编程、数据库管理和性能优化</p>
+                    <ul class="topic-list">
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            PL/SQL 编程
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            存储过程与触发器
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            数据库备份恢复
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="db-card">
+                    <div class="db-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h3>Redis</h3>
+                    <p>高性能键值存储数据库，掌握数据结构、缓存策略、持久化机制</p>
+                    <ul class="topic-list">
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            五种基本数据类型
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            缓存穿透/击穿/雪崩
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            主从复制与哨兵
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="db-card">
+                    <div class="db-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>MongoDB</h3>
+                    <p>面向文档的NoSQL数据库，学习文档模型、聚合查询、分片集群</p>
+                    <ul class="topic-list">
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            文档模型设计
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            聚合管道
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            索引与性能优化
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="db-card">
+                    <div class="db-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SQL优化</h3>
+                    <p>深入理解SQL执行计划，掌握查询优化技巧和索引设计原则</p>
+                    <ul class="topic-list">
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            执行计划分析
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            索引设计策略
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            慢查询优化
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="db-card">
+                    <div class="db-icon" style="background: linear-gradient(135deg, #30cfd0, #330867);">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>数据库设计</h3>
+                    <p>学习数据库设计范式、ER建模、表结构设计和数据迁移</p>
+                    <ul class="topic-list">
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            三大范式
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            ER 图设计
+                        </li>
+                        <li class="topic-item">
+                            <i class="fas fa-check-circle"></i>
+                            分库分表策略
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 学习资源 -->
+            <div style="background: var(--bg-primary); padding: var(--spacing-xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                <h2 style="margin-bottom: var(--spacing-lg);">📚 推荐学习资源</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                    <div style="padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                        <h4 style="margin-bottom: var(--spacing-sm);">📖 经典书籍</h4>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem;">《高性能MySQL》、《SQL必知必会》、《数据库系统概念》</p>
+                    </div>
+                    <div style="padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                        <h4 style="margin-bottom: var(--spacing-sm);">🎓 在线课程</h4>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem;">慕课网数据库课程、极客时间MySQL实战</p>
+                    </div>
+                    <div style="padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                        <h4 style="margin-bottom: var(--spacing-sm);">🔧 实践工具</h4>
+                        <p style="color: var(--text-tertiary); font-size: 0.9rem;">MySQL Workbench、DBeaver、Navicat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>© 2024 Feuerwerk. 使用 ❤️ 构建</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

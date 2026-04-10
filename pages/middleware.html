@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中间件技术 - Feuerwerk's Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/docs-style.css">
+    <style>
+        .mw-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .mw-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-xl);
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            border-radius: var(--radius-xl);
+            color: white;
+        }
+
+        .mw-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .mw-description {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .mw-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .mw-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .mw-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #30cfd0;
+        }
+
+        .mw-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Feuerwerk's KB</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-search">
+                    <input type="text" placeholder="搜索文档..." class="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html" class="nav-link">首页</a>
+                    <a href="algorithm.html" class="nav-link">算法</a>
+                    <a href="java-backend.html" class="nav-link">Java后端</a>
+                    <a href="ai.html" class="nav-link">人工智能</a>
+                    <a href="database.html" class="nav-link">数据库</a>
+                    <a href="projects.html" class="nav-link">项目展示</a>
+                    <a href="about.html" class="nav-link">关于</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="main-container">
+        <div class="mw-container">
+            <!-- 头部 -->
+            <div class="mw-header">
+                <h1 class="mw-title">中间件技术学习指南</h1>
+                <p class="mw-description">
+                    掌握分布式中间件，构建高可用、高性能的分布式系统
+                </p>
+            </div>
+
+            <!-- 中间件主题 -->
+            <div class="mw-grid">
+                <div class="mw-card">
+                    <div class="mw-icon" style="background: linear-gradient(135deg, #30cfd0, #330867);">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Redis</h3>
+                    <p>高性能内存数据库，学习缓存设计、分布式锁、消息队列</p>
+                </div>
+
+                <div class="mw-card">
+                    <div class="mw-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>消息队列</h3>
+                    <p>RabbitMQ、Kafka、RocketMQ等消息中间件，实现异步解耦</p>
+                </div>
+
+                <div class="mw-card">
+                    <div class="mw-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>分布式技术</h3>
+                    <p>分布式事务、分布式锁、服务治理、配置中心</p>
+                </div>
+
+                <div class="mw-card">
+                    <div class="mw-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>高并发</h3>
+                    <p>限流、降级、熔断、缓存等高并发系统设计策略</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>© 2024 Feuerwerk. 使用 ❤️ 构建</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

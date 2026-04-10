@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目展示 - Feuerwerk's Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/docs-style.css">
+    <style>
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .projects-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .projects-subtitle {
+            color: var(--text-tertiary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.625rem 1.25rem;
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+        }
+
+        .project-header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .project-icon {
+            font-size: 5rem;
+            opacity: 0.9;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            padding: 0.375rem 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-body {
+            padding: var(--spacing-lg);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-tertiary);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+            min-height: 60px;
+        }
+
+        .project-features {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .feature-item i {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tech-tag {
+            padding: 0.375rem 0.75rem;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-footer {
+            display: flex;
+            gap: var(--spacing-sm);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .project-link {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .project-link.primary:hover {
+            background: var(--primary-light);
+        }
+
+        .project-link.secondary {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .project-link.secondary:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--primary-color);
+        }
+
+        .stats-section {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--spacing-md);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .contribution-section {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contribution-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contribution-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .contribution-calendar {
+            display: grid;
+            grid-template-columns: repeat(52, 1fr);
+            gap: 4px;
+        }
+
+        .contribution-day {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            background: var(--bg-secondary);
+        }
+
+        .contribution-day.level-1 {
+            background: #9be9a8;
+        }
+
+        .contribution-day.level-2 {
+            background: #40c463;
+        }
+
+        .contribution-day.level-3 {
+            background: #30a14e;
+        }
+
+        .contribution-day.level-4 {
+            background: #216e39;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-section {
+                gap: var(--spacing-xs);
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Feuerwerk's KB</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-search">
+                    <input type="text" placeholder="搜索文档..." class="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html" class="nav-link">首页</a>
+                    <a href="algorithm.html" class="nav-link">算法</a>
+                    <a href="java-backend.html" class="nav-link">Java后端</a>
+                    <a href="ai.html" class="nav-link">人工智能</a>
+                    <a href="database.html" class="nav-link">数据库</a>
+                    <a href="projects.html" class="nav-link active">项目展示</a>
+                    <a href="about.html" class="nav-link">关于</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="main-container">
+        <div class="projects-container">
+            <!-- 头部 -->
+            <div class="projects-header">
+                <h1 class="projects-title">项目展示</h1>
+                <p class="projects-subtitle">
+                    这里展示了我在学习过程中完成的各种项目，包括移动应用、Web应用、工具类项目等
+                </p>
+            </div>
+
+            <!-- 统计数据 -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div class="stat-number">23</div>
+                        <div class="stat-label">开源项目</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">获得星标</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-code-pull-request"></i>
+                        </div>
+                        <div class="stat-number">89</div>
+                        <div class="stat-label">贡献次数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">协作项目</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 项目筛选 -->
+            <div class="filter-section">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> 全部
+                </button>
+                <button class="filter-btn" data-filter="android">
+                    <i class="fab fa-android"></i> Android
+                </button>
+                <button class="filter-btn" data-filter="web">
+                    <i class="fas fa-globe"></i> Web应用
+                </button>
+                <button class="filter-btn" data-filter="backend">
+                    <i class="fas fa-server"></i> 后端服务
+                </button>
+                <button class="filter-btn" data-filter="tool">
+                    <i class="fas fa-tools"></i> 工具类
+                </button>
+            </div>
+
+            <!-- 项目列表 -->
+            <div class="projects-grid">
+                <!-- 项目1: 日历APP -->
+                <div class="project-card" data-category="android">
+                    <div class="project-header">
+                        <i class="fas fa-mobile-alt project-icon"></i>
+                        <div class="project-badge">Android</div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">日历APP</h3>
+                        <p class="project-description">
+                            Android原生开发的日历应用，支持农历阳历转换、节日提醒、日程管理等功能
+                        </p>
+                        <div class="project-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    农历阳历智能转换
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    节日生日提醒
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    日程事件管理
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Kotlin</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com/FeuerwerkLy" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i>
+                                源码
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fas fa-play"></i>
+                                演示
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目2: 学生管理系统 -->
+                <div class="project-card" data-category="backend">
+                    <div class="project-header">
+                        <i class="fas fa-user-graduate project-icon"></i>
+                        <div class="project-badge">Web应用</div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">学生管理系统</h3>
+                        <p class="project-description">
+                            基于Spring Boot和MySQL的完整后台管理系统，实现了学生信息管理的各项功能
+                        </p>
+                        <div class="project-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    完整的CRUD操作
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    权限管理
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    数据统计分析
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">MyBatis</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Vue.js</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com/FeuerwerkLy" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i>
+                                源码
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fas fa-desktop"></i>
+                                在线预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目3: 算法学习平台 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-header">
+                        <i class="fas fa-chart-line project-icon"></i>
+                        <div class="project-badge">Web应用</div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">算法学习平台</h3>
+                        <p class="project-description">
+                            在线算法学习与练习平台，提供题目分类、解题思路、代码分享等功能
+                        </p>
+                        <div class="project-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    题目分类管理
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    在线代码编辑
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    学习进度追踪
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com/FeuerwerkLy" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i>
+                                源码
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fas fa-desktop"></i>
+                                在线预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目4: 即时通讯系统 -->
+                <div class="project-card" data-category="backend">
+                    <div class="project-header">
+                        <i class="fas fa-comments project-icon"></i>
+                        <div class="project-badge">后端服务</div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">即时通讯系统</h3>
+                        <p class="project-description">
+                            基于WebSocket的实时通讯系统，支持单聊、群聊、文件传输等功能
+                        </p>
+                        <div class="project-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    实时消息推送
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    群组管理
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    文件传输
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">Netty</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">RabbitMQ</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com/FeuerwerkLy" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i>
+                                源码
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fas fa-file-alt"></i>
+                                文档
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目5: 代码格式化工具 -->
+                <div class="project-card" data-category="tool">
+                    <div class="project-header">
+                        <i class="fas fa-code project-icon"></i>
+                        <div class="project-badge">工具类</div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">代码格式化工具</h3>
+                        <p class="project-description">
+                            轻量级代码格式化工具，支持多种编程语言，可自定义格式化规则
+                        </p>
+                        <div class="project-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    多语言支持
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    自定义规则
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    批量处理
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">CLI</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com/FeuerwerkLy" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i>
+                                源码
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fas fa-download"></i>
+                                下载
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目6: 个人博客系统 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-header">
+                        <i class="fas fa-blog project-icon"></i>
+                        <div class="project-badge">Web应用</div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">个人博客系统</h3>
+                        <p class="project-description">
+                            轻量级个人博客系统，支持Markdown编辑、标签分类、评论互动等功能
+                        </p>
+                        <div class="project-features">
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    Markdown编辑
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    标签分类
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    SEO优化
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Thymeleaf</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com/FeuerwerkLy" target="_blank" class="project-link primary">
+                                <i class="fab fa-github"></i>
+                                源码
+                            </a>
+                            <a href="#" class="project-link secondary">
+                                <i class="fas fa-desktop"></i>
+                                在线预览
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 贡献日历 -->
+            <div class="contribution-section">
+                <div class="contribution-header">
+                    <h3 class="contribution-title">
+                        <i class="fas fa-fire"></i>
+                        学习贡献
+                    </h3>
+                    <span style="color: var(--text-lighter); font-size: 0.9rem;">
+                        过去一年持续学习，每天进步一点点
+                    </span>
+                </div>
+                <div class="contribution-calendar" id="contributionCalendar">
+                    <!-- JavaScript will generate the calendar -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>© 2024 Feuerwerk. 使用 ❤️ 构建</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 项目筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 更新按钮状态
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+
+                    // 筛选项目
+                    projectCards.forEach(card => {
+                        const category = card.dataset.category;
+
+                        if (filter === 'all' || category === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // 生成贡献日历
+            generateContributionCalendar();
+        });
+
+        function generateContributionCalendar() {
+            const calendar = document.getElementById('contributionCalendar');
+            const weeks = 52;
+            const days = 7;
+
+            for (let week = 0; week < weeks; week++) {
+                for (let day = 0; day < days; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'contribution-day';
+
+                    // 随机生成贡献等级
+                    const random = Math.random();
+                    if (random > 0.95) {
+                        dayElement.classList.add('level-4');
+                    } else if (random > 0.85) {
+                        dayElement.classList.add('level-3');
+                    } else if (random > 0.7) {
+                        dayElement.classList.add('level-2');
+                    } else if (random > 0.5) {
+                        dayElement.classList.add('level-1');
+                    }
+
+                    calendar.appendChild(dayElement);
+                }
+            }
+        }
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

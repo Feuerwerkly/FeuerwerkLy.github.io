@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人工智能 - Feuerwerk's Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/docs-style.css">
+    <style>
+        .ai-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .ai-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-xl);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: var(--radius-xl);
+            color: white;
+        }
+
+        .ai-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .ai-description {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .topic-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #4facfe;
+        }
+
+        .topic-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .topic-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .topic-card p {
+            color: var(--text-tertiary);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-xs);
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover {
+            background: var(--bg-secondary);
+        }
+
+        .resource-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .resource-item a:hover {
+            color: #4facfe;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Feuerwerk's KB</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-search">
+                    <input type="text" placeholder="搜索文档..." class="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html" class="nav-link">首页</a>
+                    <a href="algorithm.html" class="nav-link">算法</a>
+                    <a href="java-backend.html" class="nav-link">Java后端</a>
+                    <a href="ai.html" class="nav-link active">人工智能</a>
+                    <a href="database.html" class="nav-link">数据库</a>
+                    <a href="projects.html" class="nav-link">项目展示</a>
+                    <a href="about.html" class="nav-link">关于</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="main-container">
+        <div class="ai-container">
+            <!-- 头部 -->
+            <div class="ai-header">
+                <h1 class="ai-title">人工智能学习指南</h1>
+                <p class="ai-description">
+                    探索机器学习、深度学习和AI应用，从基础理论到实战项目
+                </p>
+            </div>
+
+            <!-- 学习主题 -->
+            <div class="topic-grid">
+                <div class="topic-card">
+                    <div class="topic-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>机器学习</h3>
+                    <p>监督学习、无监督学习、强化学习等机器学习核心概念和算法</p>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-book" style="color: #667eea;"></i>
+                            <a href="#">《机器学习》周志华</a>
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-graduation-cap" style="color: #667eea;"></i>
+                            <a href="#">吴恩达机器学习课程</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>深度学习</h3>
+                    <p>神经网络、CNN、RNN、Transformer等深度学习架构</p>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-book" style="color: #f093fb;"></i>
+                            <a href="#">《深度学习》Goodfellow</a>
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-code" style="color: #f093fb;"></i>
+                            <a href="#">TensorFlow 实战</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python AI</h3>
+                    <p>NumPy、Pandas、Scikit-learn、PyTorch等AI开发工具</p>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-code" style="color: #4facfe;"></i>
+                            <a href="#">Python 数据分析</a>
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-laptop-code" style="color: #4facfe;"></i>
+                            <a href="#">PyTorch 入门教程</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>计算机视觉</h3>
+                    <p>图像处理、目标检测、图像分割、人脸识别等视觉任务</p>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-book" style="color: #43e97b;"></i>
+                            <a href="#">《计算机视觉算法》</a>
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-tasks" style="color: #43e97b;"></i>
+                            <a href="#">OpenCV 实战项目</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>自然语言处理</h3>
+                    <p>文本分类、情感分析、机器翻译、聊天机器人等NLP技术</p>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-book" style="color: #fa709a;"></i>
+                            <a href="#">《自然语言处理综论》</a>
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-robot" style="color: #fa709a;"></i>
+                            <a href="#">GPT 技术解析</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon" style="background: linear-gradient(135deg, #30cfd0, #330867);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>AI应用</h3>
+                    <p>推荐系统、预测分析、智能决策等实际应用场景</p>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <i class="fas fa-lightbulb" style="color: #30cfd0;"></i>
+                            <a href="#">推荐系统实战</a>
+                        </li>
+                        <li class="resource-item">
+                            <i class="fas fa-database" style="color: #30cfd0;"></i>
+                            <a href="#">数据分析项目</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 学习路径 -->
+            <div style="background: var(--bg-primary); padding: var(--spacing-xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                <h2 style="margin-bottom: var(--spacing-lg);">🎯 学习路径推荐</h2>
+                <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                    <div style="display: flex; gap: var(--spacing-md); align-items: center; padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #4facfe; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+                        <div>
+                            <h4 style="margin-bottom: 4px;">Python 基础</h4>
+                            <p style="color: var(--text-lighter); font-size: 0.9rem;">掌握 Python 编程基础和常用库</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: var(--spacing-md); align-items: center; padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #667eea; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+                        <div>
+                            <h4 style="margin-bottom: 4px;">数学基础</h4>
+                            <p style="color: var(--text-lighter); font-size: 0.9rem;">线性代数、概率论、微积分</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: var(--spacing-md); align-items: center; padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #f093fb; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+                        <div>
+                            <h4 style="margin-bottom: 4px;">机器学习</h4>
+                            <p style="color: var(--text-lighter); font-size: 0.9rem;">经典机器学习算法和 Scikit-learn</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: var(--spacing-md); align-items: center; padding: var(--spacing-md); background: var(--bg-secondary); border-radius: var(--radius-md);">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #43e97b; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">4</div>
+                        <div>
+                            <h4 style="margin-bottom: 4px;">深度学习</h4>
+                            <p style="color: var(--text-lighter); font-size: 0.9rem;">神经网络和 PyTorch/TensorFlow</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>© 2024 Feuerwerk. 使用 ❤️ 构建</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

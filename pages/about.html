@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - Feuerwerk's Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/docs-style.css">
+    <style>
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .profile-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            margin: 0 auto var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .profile-bio {
+            color: var(--text-tertiary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+            line-height: 1.8;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-lg);
+        }
+
+        .profile-stat {
+            text-align: center;
+        }
+
+        .profile-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .profile-stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .section {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .skill-item {
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-primary);
+        }
+
+        .skill-level {
+            height: 6px;
+            background: var(--border-color);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: 3px;
+            transition: width 1s ease-in-out;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: var(--spacing-xl);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: var(--spacing-lg);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-1 * var(--spacing-xl) - 6px);
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid var(--bg-primary);
+        }
+
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timeline-desc {
+            color: var(--text-tertiary);
+            font-size: 0.95rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-info p {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Feuerwerk's KB</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-search">
+                    <input type="text" placeholder="搜索文档..." class="search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html" class="nav-link">首页</a>
+                    <a href="algorithm.html" class="nav-link">算法</a>
+                    <a href="java-backend.html" class="nav-link">Java后端</a>
+                    <a href="ai.html" class="nav-link">人工智能</a>
+                    <a href="database.html" class="nav-link">数据库</a>
+                    <a href="projects.html" class="nav-link">项目展示</a>
+                    <a href="about.html" class="nav-link active">关于</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="main-container">
+        <div class="about-container">
+            <!-- 个人简介卡片 -->
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1 class="profile-name">Feuerwerk</h1>
+                <p class="profile-bio">
+                    终身学习者 | 全栈开发者 | 技术探索者<br>
+                    热爱编程，享受解决问题带来的成就感
+                </p>
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">100+</div>
+                        <div class="profile-stat-label">原创文章</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">20+</div>
+                        <div class="profile-stat-label">开源项目</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-value">1000+</div>
+                        <div class="profile-stat-label">学习时长</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技能专长 -->
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-code"></i>
+                    技能专长
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-name">Java</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Spring Boot</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">算法</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">MySQL</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Redis</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Python</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Android</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Vue.js</div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习经历 -->
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-history"></i>
+                    学习经历
+                </h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - 至今</div>
+                        <div class="timeline-title">深入Java后端技术栈</div>
+                        <div class="timeline-desc">
+                            系统学习Spring生态、微服务架构、分布式系统，深入研究JVM原理和性能优化
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 - 2023</div>
+                        <div class="timeline-title">算法与数据结构进阶</div>
+                        <div class="timeline-desc">
+                            刷题300+，掌握常见算法和高级数据结构，参加算法竞赛
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <div class="timeline-title">Android移动开发</div>
+                        <div class="timeline-desc">
+                            学习Android原生开发，掌握Kotlin语言，完成多个APP项目
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <div class="timeline-title">编程入门与基础学习</div>
+                        <div class="timeline-desc">
+                            开始学习编程，掌握Java基础、数据结构、算法入门知识
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 联系方式 -->
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-envelope"></i>
+                    联系方式
+                </h2>
+                <div class="contact-methods">
+                    <a href="https://github.com/FeuerwerkLy" target="_blank" class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>GitHub</h4>
+                            <p>查看我的开源项目</p>
+                        </div>
+                    </a>
+                    <a href="mailto:your-email@example.com" class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>your-email@example.com</p>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-weixin"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>微信公众号</h4>
+                            <p>关注我的技术分享</p>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>技术博客</h4>
+                            <p>阅读更多文章</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 致谢 -->
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-heart"></i>
+                    致谢
+                </h2>
+                <p style="color: var(--text-tertiary); line-height: 1.8;">
+                    感谢所有开源项目的作者和维护者，你们的贡献让编程世界变得更加美好。
+                    特别感谢以下项目给我的启发：
+                </p>
+                <div style="margin-top: var(--spacing-md); display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                    <a href="https://github.com/Snailclimb/JavaGuide" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                        <i class="fas fa-external-link-alt"></i> JavaGuide
+                    </a>
+                    <a href="https://github.com/OI-wiki/OI-wiki" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                        <i class="fas fa-external-link-alt"></i> OI-wiki
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>© 2024 Feuerwerk. 使用 ❤️ 构建</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
