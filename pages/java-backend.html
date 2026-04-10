@@ -378,7 +378,9 @@
                             性能优化
                         </a>
                     </li>
+                    <!-- 动态加载的文档链接将插入到这里 -->
                 </ul>
+                <div id="dynamic-docs-section"></div>
             </aside>
 
             <!-- 文档内容 -->
@@ -667,6 +669,9 @@ public class UserService {
         // 初始化代码高亮
         document.addEventListener('DOMContentLoaded', function() {
             hljs.highlightAll();
+
+            // 动态加载文档列表
+            loadDocs('../docs/java-backend/docs-index.json');
         });
 
         // 侧边栏导航高亮
@@ -690,6 +695,7 @@ public class UserService {
             });
         });
     </script>
+    <script src="../js/docs-loader.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

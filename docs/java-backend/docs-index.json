@@ -1,0 +1,26 @@
+{
+  "category": "扩展文档",
+  "documents": [
+    {
+      "id": "juc",
+      "title": "JUC并发编程",
+      "icon": "fas fa-file-alt",
+      "file": "../docs/java-backend/JUC.md",
+      "description": "Java并发编程知识体系"
+    },
+    {
+      "id": "collection",
+      "title": "集合框架",
+      "icon": "fas fa-file-alt",
+      "file": "../docs/java-backend/collection.md",
+      "description": "Java集合框架体系"
+    },
+    {
+      "id": "project",
+      "title": "Quarkus项目",
+      "icon": "fas fa-rocket",
+      "file": "../docs/java-backend/project.md",
+      "description": "云原生Java框架"
+    }
+  ]
+}
