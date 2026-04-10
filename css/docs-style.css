@@ -119,6 +119,13 @@ body {
     font-size: 1.4rem;
 }
 
+.nav-brand .logo .logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
